@@ -28,7 +28,6 @@ void main()
 	delete[] arr;
 	//Memory leaks
 
-
 }
 void FillRand(int arr[], const int n)
 {

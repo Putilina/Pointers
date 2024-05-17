@@ -32,14 +32,9 @@ void main()
 
 	for (int i = 0, j = 0, k = 0; i < n; i++)
 	{
-		if (arr[i] % 2 == 0)
-		{
-			even_arr[j++] = arr[i];
-		}
-		else
-		{
-			odd_arr[k++] = arr[i];
-		}
+		// if (arr[i] % 2 == 0)even_arr[j++] = arr[i];else odd_arr[k++] = arr[i];
+		// (arr[i] % 2 == 0)?even_arr[j++] = arr[i]: odd_arr[k++] = arr[i];
+		( arr[i] % 2 == 0 ? even_arr[j++] : odd_arr[k++]) = arr[i];
 	}
 
 

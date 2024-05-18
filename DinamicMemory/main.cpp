@@ -4,12 +4,20 @@ using namespace std;
 #define   tab  "\t"
 
 void FillRand(int arr[], const int n);
+void FillRand(int** arr, const int rows, const int cols);
+void Print(int** arr, const int rows, const int cols);
+
 void Print(int arr[], const int n);
 int* push_back(int arr[], int& n, const int value);
+
+//#define DYNAMIC_MEMORY_1
+#define DYNAMIC_MEMORY_2
 
 void main()
 {
 	setlocale(LC_ALL, "");
+
+#ifdef DYNAMIC_MEMORY_1
 	// new
 	int n = 5;
 	cout << "Введите размер массива:"; cin >> n;
@@ -28,15 +36,47 @@ void main()
 	delete[] arr;
 	//Memory leaks
 
+#endif // DYNAMIC_MEMORY_1
+
+	int rows;
+	int cols;
+	cout << "Введите количество строк:"; cin >> rows;
+	cout << "Введите количество элементов строки:"; cin >> cols;
+
+	int** arr = new int* [rows];
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = new int[cols];
+	}
+
+
+	FillRand(arr, rows, cols);
+	Print(arr, rows, cols);
+
+	for (int i = 0; i < rows; i++)
+	{
+		delete[]arr[i];
+	}
+	delete[] arr;
 }
+
 void FillRand(int arr[], const int n)
 {
-	
-       for (int i = 0; i < n; i++)
-	   {
+	for (int i = 0; i < n; i++)
+	{
 		*(arr + i) = rand() % 100;
 		//Обращение к элементам массива через арифметику указателей и оператор разыменования
-	   }
+	}
+}
+void FillRand(int** arr, const int rows, const int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			arr[i][j] = rand() % 100;
+		}
+	}
 }
 void Print(int arr[], const int n)
 {
@@ -46,7 +86,22 @@ void Print(int arr[], const int n)
 		//Обращение к элементам массива через оператор индексирования []
 	}
 	cout << endl;
+	
 }
+
+void Print(int** arr, const int rows, const int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << arr[i][j] << tab;
+		}
+		cout << endl;
+	}
+}
+
+
 int* push_back(int arr[], int& n, const int value)
 {
 	// 1) Создаем буферный массив нужного размера:

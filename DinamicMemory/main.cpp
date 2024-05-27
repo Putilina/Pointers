@@ -31,8 +31,8 @@ int** pop_row_back(int** arr, int& rows, const int cols);
 
 void push_col_back(int** arr, const int rows, int& cols);
 
-//#define DYNAMIC_MEMORY_1
-#define DYNAMIC_MEMORY_2
+#define DYNAMIC_MEMORY_1
+//#define DYNAMIC_MEMORY_2
 //#define PERFORMANCE_CHECK
 
 void main()
@@ -43,7 +43,7 @@ void main()
 	//		new
 	int n = 5;
 	cout << "Введите размер массива: "; cin >> n;
-	int* arr = new int[n];
+	double* arr = new double[n];
 
 	FillRand(arr, n);
 	Print(arr, n);
